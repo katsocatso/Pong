@@ -14,6 +14,11 @@ class Paddle {
         this.points = 0;
     }
 
+    reset(x) {
+        this.x = x;
+        this.y = canvas.height / 2; 
+    }
+
     display() {
         ctx.fillStyle = "white";
         ctx.fillRect(this.x, this.y, this.width, this.height);
