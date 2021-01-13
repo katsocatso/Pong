@@ -4,7 +4,7 @@ ctx = canvas.getContext('2d');
 function createCanvas(w, h) {
     canvas.height = h;
     canvas.width = w;
-    canvas.style = "position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto";
+    canvas.style = "position: absolute; left: 0px; right: 0px; margin: auto";
 }
 
 function background() {
