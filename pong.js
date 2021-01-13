@@ -4,18 +4,23 @@ let aiPaddle;
 let ball;
 let gameState;
 let servingPlayer;
+// var canvas = document.createElement("canvas");
+
 const UP_ARROW = 38;
 const DOWN_ARROW = 40;
 const ENTER = 13;
 const WIN_PTS = 10;
+const screenColor = 'rgb(31, 32, 41)';
+const objectsColor = 'rgb(223, 225, 226)';
 
 function createCanvas(w, h) {
     canvas.height = h;
     canvas.width = w;
+    canvas.style = "position: absolute; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto";
 }
 
 function background() {
-    ctx.fillStyle = 'rgb(31, 32, 41)';
+    ctx.fillStyle = screenColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     //without first two lines, code compiles but has no effect
 
@@ -30,7 +35,8 @@ function background() {
 }
 
 function setup() {
-    createCanvas(window.innerWidth, window.innerHeight);
+    //createCanvas(window.innerWidth, window.innerHeight);
+    createCanvas(700, 450);
     playerPaddle = new Paddle(26);
     aiPaddle = new Paddle(canvas.width - 48);
     ball = new Ball();
@@ -41,27 +47,30 @@ function setup() {
 function displayStateMsg() {
     if (gameState == "start") {
         ctx.textAlign = "right";
-        ctx.fillStyle = "white";
+        ctx.fillStyle = objectsColor;
         ctx.font = "60px Impact";
         ctx.fillText("PONG", canvas.width / 2 - 100, canvas.height / 2);
         ctx.font = "20px Impact";
         ctx.fillText("Press Enter to start", canvas.width / 2 - 100, canvas.height / 2 + 60);
     } else if (gameState == "end") {
-        ctx.fillStyle = "white";
-        ctx.font = "25px Impact";
+        ctx.fillStyle = objectsColor;
+        ctx.font = "20px Impact";
         if (aiPaddle.points == WIN_PTS) {
+            //ctx.textAlign = "right";
             ctx.fillText("Player 2 Wins!", canvas.width / 2 - 70, canvas.height / 2 + 50);
         } else {
+            //ctx.textAlign = "left";
             ctx.fillText("Player 1 Wins!", canvas.width / 2 - 70, canvas.height / 2 + 50);
         }
     }
 }
 
 function displayScore() {
-    ctx.font = "50px Press Start 2P";
-    ctx.fillStyle = "white";
-    ctx.fillText(playerPaddle.points.toString(), canvas.width / 2 - 50, 60);
-    ctx.fillText(aiPaddle.points.toString(), canvas.width / 2 + 25, 60);
+    ctx.font = "50px Impact";
+    ctx.fillStyle = objectsColor;
+    ctx.textAlign = "center";
+    ctx.fillText(playerPaddle.points.toString(), canvas.width / 2 - 30, 60);
+    ctx.fillText(aiPaddle.points.toString(), canvas.width / 2 + 30, 60);
 }
 
 function draw() {
@@ -94,7 +103,7 @@ function update() {
             gameState = "end";
             cancelAnimationFrame(animID);
         }
-    } 
+    }
     draw();
 }
 
@@ -109,7 +118,7 @@ function ballUpdate() {
     } else if (ball.x > canvas.width - ball.r) {
         playerPaddle.points += 1;
         servingPlayer = aiPaddle;
-       reset(servingPlayer); 
+        reset(servingPlayer);
     }
 
     ball.x += ball.xAcc * ball.xSpeed;

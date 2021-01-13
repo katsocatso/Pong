@@ -5,9 +5,10 @@ html, body {
     text-align: center;
     margin: 0;
     padding: 0;
-    background-image: linear-gradient(120deg, #65f67d 0%, #85d7fd 100%);
+    /*background-image: linear-gradient(120deg, #65f67d 0%, #85d7fd 100%);*/
     font-family: 'Press Start 2P', sans-serif;
     font-size: 32px;
+    background-color: rgb(163, 204, 224);
   }
   canvas {
     display: block;

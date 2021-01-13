@@ -20,7 +20,7 @@ class Paddle {
     }
 
     display() {
-        ctx.fillStyle = "white";
+        ctx.fillStyle = objectsColor;
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 
