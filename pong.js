@@ -41,7 +41,7 @@ function reset(servingPlayer) {
 function update() {    
     let animID = window.requestAnimationFrame(update);
     if (gameState == "play") {
-        ballUpdate();
+        ball.update();
         playerPaddle.update();
         processAI();
         aiPaddle.update();
@@ -54,25 +54,6 @@ function update() {
         }
     }
     draw();
-}
-
-function ballUpdate() {
-    if (ball.y < 0 || ball.y > canvas.height - ball.r) {    // ball hits wall
-        ball.ySpeed = -ball.ySpeed;
-    }
-    if (ball.x < 0) {
-        aiPaddle.points += 1;
-        servingPlayer = playerPaddle;
-        reset(servingPlayer);
-    } else if (ball.x > canvas.width - ball.r) {
-        playerPaddle.points += 1;
-        servingPlayer = aiPaddle;
-        reset(servingPlayer);
-    }
-
-    ball.x += ball.xAcc * ball.xSpeed;
-    ball.y += ball.
-        yAcc * ball.ySpeed;
 }
 
 function processAI() {

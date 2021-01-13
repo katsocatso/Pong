@@ -85,4 +85,24 @@ class Ball {
            return true;
         }
     }
+
+    // note: updating may change ball speed and direction, and also the score
+    update() {
+        if (this.y < 0 || this.y > canvas.height - this.r) {    // this hits wall
+            this.ySpeed = -this.ySpeed;
+        }
+        if (this.x < 0) {
+            aiPaddle.points += 1;
+            servingPlayer = playerPaddle;
+            reset(servingPlayer);
+        } else if (this.x > canvas.width - this.r) {
+            playerPaddle.points += 1;
+            servingPlayer = aiPaddle;
+            reset(servingPlayer);
+        }
+    
+        this.x += this.xAcc * this.xSpeed;
+        this.y += this.
+            yAcc * this.ySpeed;
+    }
 }

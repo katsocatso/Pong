@@ -18,7 +18,7 @@ function background() {
     ctx.lineWidth = 3;
     ctx.setLineDash([12, 6]);
     ctx.lineTo(canvas.width / 2, canvas.height);
-    ctx.strokeStyle = "white";
+    ctx.strokeStyle = objectsColor;
     ctx.stroke();
 }
 
