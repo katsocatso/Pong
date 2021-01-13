@@ -14,7 +14,6 @@ const screenColor = 'rgb(31, 32, 41)';
 const objectsColor = 'rgb(223, 225, 226)';
 
 function setup() {
-    //createCanvas(window.innerWidth, window.innerHeight);
     createCanvas(700, 450);
     playerPaddle = new Paddle(26);
     aiPaddle = new Paddle(canvas.width - 48);
@@ -74,30 +73,6 @@ function ballUpdate() {
     ball.x += ball.xAcc * ball.xSpeed;
     ball.y += ball.
         yAcc * ball.ySpeed;
-}
-
-function keyHeld(e) {
-    if (e.keyCode == UP_ARROW) {
-        playerPaddle.isUp = true;
-    } else if (e.keyCode == DOWN_ARROW) {
-        playerPaddle.isDown = true;
-    }
-}
-
-function keyReleased(e) {
-    if (e.keyCode == UP_ARROW) {
-        playerPaddle.isUp = false;
-    } else if (e.keyCode == DOWN_ARROW) {
-        playerPaddle.isDown = false;
-    }
-}
-
-function keyPressed(e) {
-    if (e.keyCode == ENTER && gameState == "start") {
-        gameState = "play";
-        update();
-        update();
-    }
 }
 
 function processAI() {
